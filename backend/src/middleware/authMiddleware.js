@@ -26,11 +26,13 @@ function authenticateToken(req, res, next) {
 
     next();
   } catch (error) {
-    return res.status(401).json({
-      success: false,
-      message: "Token i pavlefshëm ose i skaduar.",
-    });
-  }
+  console.error("JWT VERIFY ERROR:", error.name, error.message);
+
+  return res.status(401).json({
+    success: false,
+    message: "Token i pavlefshëm ose i skaduar.",
+  });
+}
 }
 
 // =========================================================
